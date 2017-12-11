@@ -1,0 +1,5 @@
+text file
+second row
+third row
+fourth row!
+This is incredible.
