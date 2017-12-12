@@ -31,6 +31,7 @@ public class Action {
             try {
                 if (f.isFile() && f.getName().contains(".txt")) {
                     Scanner scanner = new Scanner(new FileReader(folder.getName() + "\\" + f.getName()));
+                    System.out.println("File : " + f.getName());
                     while (scanner.hasNextLine()) {
                         System.out.println(scanner.nextLine().trim());
                         rowCount++;
@@ -46,18 +47,19 @@ public class Action {
     }
 
     public void readSelected(int i) {
-        File f = allFiles[i];
+        
         try {
+            File f = allFiles[i];
             if (f.isFile() && f.getName().contains(".txt")) {
                 Scanner scanner = new Scanner(new FileReader(folder.getName() + "\\" + f.getName()));
-                System.out.println("File : " + f.getName() + " :");
+                System.out.println("File : " + f.getName());
                 while (scanner.hasNextLine()) {
                     System.out.println(scanner.nextLine().trim());
                 }
                 System.out.println();
             }
-        } catch (FileNotFoundException e) {
-            System.out.println(e);
+        } catch (FileNotFoundException | IllegalArgumentException | ArrayIndexOutOfBoundsException e) {
+            System.out.println(e + "\n");
         }
     }
 }
