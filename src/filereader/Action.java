@@ -13,16 +13,18 @@ public class Action {
     File[] allFiles = folder.listFiles();
 
     public void getFiles() {
-
+        int i = 0;
         System.out.println("Text files found : \n");
         for (File f : allFiles) {
             if (f.isFile() && f.getName().contains(".txt")) {
-                System.out.println(f.getName());
+                System.out.println(i + " - " + f.getName());
+                i++;
             }
         }
+        System.out.println();
     }
 
-    public Action() {
+    public void readFiles() {
 
         for (File f : allFiles) {
             int rowCount = 0;
@@ -30,7 +32,7 @@ public class Action {
                 if (f.isFile() && f.getName().contains(".txt")) {
                     Scanner scanner = new Scanner(new FileReader(folder.getName() + "\\" + f.getName()));
                     while (scanner.hasNextLine()) {
-                        System.out.println(scanner.nextLine());
+                        System.out.println(scanner.nextLine().trim());
                         rowCount++;
                     }
                     System.out.println("Row count : " + rowCount + "\n");
@@ -40,6 +42,22 @@ public class Action {
                 System.out.println(e);
             }
 
+        }
+    }
+
+    public void readSelected(int i) {
+        File f = allFiles[i];
+        try {
+            if (f.isFile() && f.getName().contains(".txt")) {
+                Scanner scanner = new Scanner(new FileReader(folder.getName() + "\\" + f.getName()));
+                System.out.println("File : " + f.getName() + " :");
+                while (scanner.hasNextLine()) {
+                    System.out.println(scanner.nextLine().trim());
+                }
+                System.out.println();
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println(e);
         }
     }
 }

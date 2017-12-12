@@ -7,8 +7,12 @@ package filereader;
 public class Filereader {
 
     public static void main(String[] args) {
-        Action ac = new Action();
-        ac.getFiles();
+        
+        Menu menu = new Menu();
+        menu.runMenu();
+
+        //ac.getFiles();
+        //ac.ReadFiles();
         
     }
     
